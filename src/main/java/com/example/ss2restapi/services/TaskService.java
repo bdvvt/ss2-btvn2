@@ -15,7 +15,12 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> findAllTasks() {
-        return taskRepository.findAll();
+    public List<Task> findAllTasks(String search) {
+        if (search== null || search.isEmpty()) {
+            return taskRepository.findAll(search);
+        }
+        return taskRepository.findAll(search).stream()
+                .filter( user -> user.getTitle().toLowerCase().contains(search.toLowerCase()))
+                .toList();
     }
 }

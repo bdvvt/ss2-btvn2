@@ -14,7 +14,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAllUsers() {
-        return userRepository.findAll();
+    public List<User> findAllUsers(String search) {
+        if (search== null || search.isEmpty()) {
+            return userRepository.findAll(search);
+        }
+        return userRepository.findAll(search).stream()
+                .filter( user -> user.getName().toLowerCase().contains(search.toLowerCase()))
+                .toList();
     }
 }

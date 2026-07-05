@@ -15,7 +15,7 @@ public class UserRepository {
             List.of(u1, u2, u3)
     );
 
-    public List<User> findAll() {
+    public List<User> findAll(String search) {
         return users;
     }
 }

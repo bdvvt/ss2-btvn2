@@ -30,7 +30,7 @@ public class TaskRepository {
         );
     }
 
-    public List<Task> findAll() {
+    public List<Task> findAll(String search) {
         return tasks;
     }
 }
