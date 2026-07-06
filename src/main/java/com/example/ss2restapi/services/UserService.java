@@ -18,8 +18,10 @@ public class UserService {
         if (search== null || search.isEmpty()) {
             return userRepository.findAll(search);
         }
-        return userRepository.findAll(search).stream()
-                .filter( user -> user.getName().toLowerCase().contains(search.toLowerCase()))
-                .toList();
+        return userRepository.findAll(search);
+    }
+
+    public User findUserById(Integer id) {
+        return userRepository.findById(id);
     }
 }

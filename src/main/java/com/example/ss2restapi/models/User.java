@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 
 public class User {
-    private Long id;
+    private Integer id;
     private String name;
     private String role;
 }
