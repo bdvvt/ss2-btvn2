@@ -57,7 +57,7 @@ public class TaskRepository {
                 .orElse(null);
     }
 
-    public Task updateTask(Task task,Integer id){
+    public Task save(Task task,Integer id){
         Task taskUp = tasks.stream()
                 .filter(t -> t.getId().equals(id))
                 .findFirst()
@@ -66,9 +66,7 @@ public class TaskRepository {
             taskUp.setTitle(task.getTitle());
             taskUp.setDescription(task.getDescription());
             taskUp.setPriority(task.getPriority());
-            if (task.getAssignedTo() != null){
-                taskUp.setAssignedTo(task.getAssignedTo());
-            }
+            taskUp.setAssignedTo(task.getAssignedTo());
             return  taskUp;
         }
         return null;

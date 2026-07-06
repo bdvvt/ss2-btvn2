@@ -39,14 +39,14 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public  Task updateTask(Integer id, Task task){
+    public  Task save(Integer id, Task task){
         if (taskRepository.findById(id) == null) {
             return null;
         }
         User existingUser = userService.findUserById(task.getAssignedTo().getId());
         if (existingUser != null) {
             task.setAssignedTo(existingUser);
-            return taskRepository.updateTask(task, id);
+            return taskRepository.save(task, id);
         }
         return null;
     }
